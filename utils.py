@@ -29,10 +29,10 @@ def k_fold_validator(predictor, target, vectorizer, classifier, cv=5):
     print('Classifier:', clf)
     print('Cross-validation folds:', cv)
     
-    for train_index, test_index in kf.split(X):
+    for train_index, test_index in kf.split(predictor):
 
-        X_tr, X_test = X[train_index].astype(str), X[test_index].astype(str)
-        y_tr, y_test = y[train_index].astype(str), y[test_index].astype(str)
+        X_tr, X_test = predictor.iloc[train_index].astype(str), predictor.iloc[test_index].astype(str)
+        y_tr, y_test = target.iloc[train_index].astype(str), target.iloc[test_index].astype(str)
 
         X_vec_tr = vec.fit_transform(X_tr)
         X_vec_test = vec.transform(X_test)
@@ -52,9 +52,21 @@ def k_fold_validator(predictor, target, vectorizer, classifier, cv=5):
         plot_confusion_matrix(clf, X_vec_test, y_test)
         plt.title('Test set')
         
-    print('Train mean recall:', round(pd.Series(train_recall_scores).mean(),2))
-    print('Train mean precision:', round(pd.Series(train_precision_scores).mean(),2))
-    print('Train mean F1:', round(pd.Series(train_f1_scores).mean(),2))
-    print('Test mean recall:', round(pd.Series(test_recall_scores).mean(),2))
-    print('Test mean precision:', round(pd.Series(test_precision_scores).mean(),2))
-    print('Test mean F1:', round(pd.Series(test_f1_scores).mean(),2))
+    print('Train mean recall: {} +/- {}'.format(round(pd.Series(train_recall_scores).mean(), 2), 
+                                               round(pd.Series(train_recall_scores).std(), 2)))
+    
+    
+    print('Train mean precision: {} +/- {}'.format(round(pd.Series(train_precision_scores).mean(), 2),
+                                                  round(pd.Series(train_precision_scores).std(), 2)))
+    
+    print('Train mean F1: {} +/- {}'.format(round(pd.Series(train_f1_scores).mean(), 2),
+                                           round(pd.Series(train_f1_scores).std(), 2)))
+    
+    print('Test mean recall: {} +/- {}'.format(round(pd.Series(test_recall_scores).mean(), 2),
+                                               round(pd.Series(test_recall_scores).std(), 2)))
+    
+    print('Test mean precision: {} +/- {}'.format(round(pd.Series(test_precision_scores).mean(), 2),
+                                                  round(pd.Series(test_precision_scores).std(), 2)))
+    
+    print('Test mean F1: {} +/- {}'.format(round(pd.Series(test_f1_scores).mean(), 2),
+                                           round(pd.Series(test_f1_scores).std(), 2)))

@@ -52,15 +52,17 @@ def k_fold_validator(predictor, target, vectorizer, classifier, cv=5):
         plot_confusion_matrix(clf, X_vec_test, y_test)
         plt.title('Test set')
         
+    print('\n')
+    
     print('Train mean recall: {} +/- {}'.format(round(pd.Series(train_recall_scores).mean(), 2), 
                                                round(pd.Series(train_recall_scores).std(), 2)))
-    
     
     print('Train mean precision: {} +/- {}'.format(round(pd.Series(train_precision_scores).mean(), 2),
                                                   round(pd.Series(train_precision_scores).std(), 2)))
     
     print('Train mean F1: {} +/- {}'.format(round(pd.Series(train_f1_scores).mean(), 2),
                                            round(pd.Series(train_f1_scores).std(), 2)))
+    print('\n')
     
     print('Test mean recall: {} +/- {}'.format(round(pd.Series(test_recall_scores).mean(), 2),
                                                round(pd.Series(test_recall_scores).std(), 2)))

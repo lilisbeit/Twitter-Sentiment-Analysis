@@ -14,6 +14,32 @@ from sklearn.pipeline import Pipeline
 
 def k_fold_validator(predictor, target, vectorizer, classifier, cv=5):
 
+    """Uses k-fold cross-validation to calculate the mean recall, precision, and f1 scores 
+    for train and test sets for a vectorizer/model combination.  Also plots a confusion
+    matrix for each test set.
+    
+    Parameters
+    ----------
+    
+    predictor : series, Text for classification; X.
+    
+    target : series, Labels assigned; y.
+    
+    vectorizer : An instance of a word vectorizer.
+    
+    classifier : An instance of a classifier.
+    
+    cv : int, How many folds to use when cross-validating.  Default = 5.
+    
+    Returns
+    -------
+    
+    No objects returned.
+    
+    Prints mean recall, precision, and f1 scores for train and test sets.
+    
+    Plots a confusion matrix for each test set."""
+    
     kf = KFold(n_splits=cv)
     vec = vectorizer
     clf = classifier

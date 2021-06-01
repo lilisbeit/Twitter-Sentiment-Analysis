@@ -18,17 +18,17 @@ To identify posts with gripes, I analyzed over 9,000 tweets from a dataset provi
 
 Each tweet in the dataset was rated by humans as showing a positive emotion, negative emotion, or no emotion toward the Google or Apple product mentioned.  A few were also labeled "I can't tell."  59% of tweets were tagged as postive, 33% as neutral, and 6% as negative, making negative tweets the smallest category aside from "I can't tell."
 
-![horizontal bar graph showing percentages described above](images/orig-label-distribution.png)
+![horizontal bar graph showing percentages described above](images/label-distribution-readme.png)
 
 After tokenization, the tweets contained just 9,780 unique words, and many of these were numbers, symbols, typos, and words combined into hashtag phrases. 
 
 ## Modeling
 
-I tested several natural language processing models which used various methods to vectorize the words in the tweets, and two different Bayesian classifiers to predict whether each tweet was negative-sentiment.
+I tested several different methods to vectorize the words in the tweets, and two different Bayesian classifiers to predict whether each tweet was negative-sentiment.
 
 ### Baseline Model
 
-The baseline model used a count vectorizer with no maximum feature limit and no n-grams or stop words list, and a Multinomial Bayes classifier.  The baseline model's **recall score was 0.12**, and its **precision score was 0.51**, as shown below.  While this model would significantly speed up analysts' work as half of all tweets returned are truly negative-sentiment, it would not be useful to Google because about 90% of negative-sentiment tweets would be missed.  The model was also overfit, suggesting it relied too heavily on features of the training set.
+The baseline model used a count vectorizer with no maximum features limit, n-grams, or stop words list, and a Multinomial Bayes classifier.  The baseline model's **recall score was 0.12**, and its **precision score was 0.51**, as shown below.  While this model would significantly speed up analysts' work as half of all tweets returned would be truly negative-sentiment, it would not be useful to Google because about 90% of negative-sentiment tweets would be missed.  The model was also overfit, suggesting it relied too heavily on features of the training set.
 
 ### Final Model
 
@@ -38,7 +38,7 @@ When run against a holdout data set, this model performed even better than it di
 
 ![confusion matrix producing recall and precision scores described above](images/final-model-holdout.png)
 
-For comparison, the baseline model run on the holdout set produced these results:
+For comparison, the baseline model run on the holdout had a recall score of **0.25** and a precision score of **0.7**, as shown below:
 
 ![confusion matrix producing recall and precision scores described above](images/baseline-model-holdout.png)
 

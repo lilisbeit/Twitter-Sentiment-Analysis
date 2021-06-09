@@ -18,7 +18,7 @@ To identify posts with gripes, I analyzed over 9,000 tweets from a dataset provi
 
 Each tweet in the dataset was rated by humans as showing a positive emotion, negative emotion, or no emotion toward the Google or Apple product mentioned.  A few were also labeled "I can't tell."  59% of tweets were tagged as postive, 33% as neutral, and 6% as negative, making negative tweets the smallest category aside from "I can't tell."
 
-![horizontal bar graph showing percentages described above](images/label-distribution-readme.png)
+![donut chart showing percentages described above](images/label-distribution-pie.png)
 
 After tokenization, the tweets contained just 9,780 unique words, and many of these were numbers, symbols, typos, and words combined into hashtag phrases. 
 

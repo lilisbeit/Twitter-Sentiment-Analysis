@@ -3,7 +3,7 @@
 **Author:** Lili Beit
 ***
 
-![image of hands holding a phone](images/phone.jpeg)
+![image of hands holding a smartphone](images/phone.jpeg)
 
 ## Overview
 Google is seeking to increase Android's share of the U.S. smartphone and tablet markets. To do so, they are seeking information on what consumers don't like about their devices. Google hopes to use social media posts to identify complaints and pain points.  Once Google has an understanding of common user frustrations, it can engineer improvements that will attract and retain more customers.
